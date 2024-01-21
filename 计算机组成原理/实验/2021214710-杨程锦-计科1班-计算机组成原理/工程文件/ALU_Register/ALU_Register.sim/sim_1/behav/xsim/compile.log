@@ -1,0 +1,4 @@
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/Progress/Vivado/ALU_Register/ALU_Register.srcs/sources_1/new/Register.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module Register
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/Progress/Vivado/ALU_Register/ALU_Register.srcs/sim_1/new/sim_register.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module sim_register

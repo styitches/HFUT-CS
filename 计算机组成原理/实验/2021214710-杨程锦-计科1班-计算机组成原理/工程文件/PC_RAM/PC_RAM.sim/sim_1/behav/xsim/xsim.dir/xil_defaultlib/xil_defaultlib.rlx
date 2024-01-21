@@ -1,0 +1,9 @@
+0.6
+2018.3
+Dec  7 2018
+00:33:28
+D:/Progress/Vivado/PC_RAM/PC_RAM.sim/sim_1/behav/xsim/glbl.v,1544155481,verilog,,,,glbl,,,,,,,,
+D:/Progress/Vivado/PC_RAM/PC_RAM.srcs/sim_1/new/sim_pc.v,1686738687,verilog,,,,sim_pc,,,,,,,,
+D:/Progress/Vivado/PC_RAM/PC_RAM.srcs/sim_1/new/sim_ram.v,1686744335,verilog,,,,sim_ram,,,,,,,,
+D:/Progress/Vivado/PC_RAM/PC_RAM.srcs/sources_1/new/PC.v,1686725545,verilog,,D:/Progress/Vivado/PC_RAM/PC_RAM.srcs/sim_1/new/sim_pc.v,,PC,,,,,,,,
+D:/Progress/Vivado/PC_RAM/PC_RAM.srcs/sources_1/new/RAM.v,1686742105,verilog,,D:/Progress/Vivado/PC_RAM/PC_RAM.srcs/sim_1/new/sim_ram.v,,RAM,,,,,,,,

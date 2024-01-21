@@ -1,0 +1,117 @@
+Vivado Simulator 2018.3
+Copyright 1986-1999, 2001-2018 Xilinx, Inc. All Rights Reserved.
+Running: D:/Vivado/Vivado/2018.3/bin/unwrapped/win64.o/xelab.exe -wto 2dac3e58a7ce4ef09ecf97c5020f6ac2 --incr --debug typical --relax --mt 2 -L xil_defaultlib -L unisims_ver -L unimacro_ver -L secureip --snapshot tb_riscv_top_behav xil_defaultlib.tb_riscv_top xil_defaultlib.glbl -log elaborate.log 
+Using 2 slave threads.
+Starting static elaboration
+Completed static elaboration
+Starting simulation data flow analysis
+WARNING: [XSIM 43-4099] "D:/Progress/Vivado/project_1/project_1.srcs/sources_1/new/instr_memory.v" Line 1. Module instr_memory doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "D:/Progress/Vivado/project_1/project_1.srcs/sources_1/new/control.v" Line 2. Module control doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "D:/Progress/Vivado/project_1/project_1.srcs/sources_1/new/control.v" Line 79. Module main_control doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "D:/Progress/Vivado/project_1/project_1.srcs/sources_1/new/control.v" Line 166. Module alu_control doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "D:/Progress/Vivado/project_1/project_1.srcs/sources_1/new/datapath.v" Line 1. Module datapath doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "D:/Progress/Vivado/project_1/project_1.srcs/sources_1/new/if_stage.v" Line 2. Module if_stage doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "D:/Progress/Vivado/project_1/project_1.srcs/sources_1/new/if_id_regs.v" Line 4. Module if_id_regs doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "D:/Progress/Vivado/project_1/project_1.srcs/sources_1/new/id_stage.v" Line 2. Module id_stage doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "D:/Progress/Vivado/project_1/project_1.srcs/sources_1/new/instr_decode.v" Line 2. Module instr_decode doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "D:/Progress/Vivado/project_1/project_1.srcs/sources_1/new/id_ex_regs.v" Line 2. Module id_ex_regs doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "D:/Progress/Vivado/project_1/project_1.srcs/sources_1/new/ex_stage.v" Line 2. Module ex_stage doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "D:/Progress/Vivado/project_1/project_1.srcs/sources_1/new/alu.v" Line 1. Module alu doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "D:/Progress/Vivado/project_1/project_1.srcs/sources_1/new/Shifter.v" Line 3. Module Shifter doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "D:/Progress/Vivado/project_1/project_1.srcs/sources_1/new/Adder.v" Line 5. Module Adder doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "D:/Progress/Vivado/project_1/project_1.srcs/sources_1/new/cla_adder32.v" Line 1. Module cla_adder32 doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "D:/Progress/Vivado/project_1/project_1.srcs/sources_1/new/cla_4.v" Line 1. Module cla_4 doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "D:/Progress/Vivado/project_1/project_1.srcs/sources_1/new/cla_4.v" Line 1. Module cla_4 doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "D:/Progress/Vivado/project_1/project_1.srcs/sources_1/new/cla_4.v" Line 1. Module cla_4 doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "D:/Progress/Vivado/project_1/project_1.srcs/sources_1/new/cla_4.v" Line 1. Module cla_4 doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "D:/Progress/Vivado/project_1/project_1.srcs/sources_1/new/cla_4.v" Line 1. Module cla_4 doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "D:/Progress/Vivado/project_1/project_1.srcs/sources_1/new/cla_4.v" Line 1. Module cla_4 doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "D:/Progress/Vivado/project_1/project_1.srcs/sources_1/new/cla_4.v" Line 1. Module cla_4 doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "D:/Progress/Vivado/project_1/project_1.srcs/sources_1/new/cla_4.v" Line 1. Module cla_4 doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "D:/Progress/Vivado/project_1/project_1.srcs/sources_1/new/cla_4.v" Line 1. Module cla_4 doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "D:/Progress/Vivado/project_1/project_1.srcs/sources_1/new/cla_4.v" Line 1. Module cla_4 doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "D:/Progress/Vivado/project_1/project_1.srcs/sources_1/new/cla_4.v" Line 1. Module cla_4 doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "D:/Progress/Vivado/project_1/project_1.srcs/sources_1/new/branch_judge.v" Line 2. Module branch_judge doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "D:/Progress/Vivado/project_1/project_1.srcs/sources_1/new/cla_adder32.v" Line 1. Module cla_adder32 doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "D:/Progress/Vivado/project_1/project_1.srcs/sources_1/new/cla_4.v" Line 1. Module cla_4 doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "D:/Progress/Vivado/project_1/project_1.srcs/sources_1/new/cla_4.v" Line 1. Module cla_4 doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "D:/Progress/Vivado/project_1/project_1.srcs/sources_1/new/cla_4.v" Line 1. Module cla_4 doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "D:/Progress/Vivado/project_1/project_1.srcs/sources_1/new/cla_4.v" Line 1. Module cla_4 doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "D:/Progress/Vivado/project_1/project_1.srcs/sources_1/new/cla_4.v" Line 1. Module cla_4 doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "D:/Progress/Vivado/project_1/project_1.srcs/sources_1/new/cla_4.v" Line 1. Module cla_4 doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "D:/Progress/Vivado/project_1/project_1.srcs/sources_1/new/cla_4.v" Line 1. Module cla_4 doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "D:/Progress/Vivado/project_1/project_1.srcs/sources_1/new/cla_4.v" Line 1. Module cla_4 doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "D:/Progress/Vivado/project_1/project_1.srcs/sources_1/new/cla_4.v" Line 1. Module cla_4 doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "D:/Progress/Vivado/project_1/project_1.srcs/sources_1/new/cla_4.v" Line 1. Module cla_4 doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "D:/Progress/Vivado/project_1/project_1.srcs/sources_1/new/cla_4.v" Line 1. Module cla_4 doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "D:/Progress/Vivado/project_1/project_1.srcs/sources_1/new/cla_adder32.v" Line 1. Module cla_adder32 doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "D:/Progress/Vivado/project_1/project_1.srcs/sources_1/new/cla_4.v" Line 1. Module cla_4 doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "D:/Progress/Vivado/project_1/project_1.srcs/sources_1/new/cla_4.v" Line 1. Module cla_4 doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "D:/Progress/Vivado/project_1/project_1.srcs/sources_1/new/cla_4.v" Line 1. Module cla_4 doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "D:/Progress/Vivado/project_1/project_1.srcs/sources_1/new/cla_4.v" Line 1. Module cla_4 doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "D:/Progress/Vivado/project_1/project_1.srcs/sources_1/new/cla_4.v" Line 1. Module cla_4 doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "D:/Progress/Vivado/project_1/project_1.srcs/sources_1/new/cla_4.v" Line 1. Module cla_4 doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "D:/Progress/Vivado/project_1/project_1.srcs/sources_1/new/cla_4.v" Line 1. Module cla_4 doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "D:/Progress/Vivado/project_1/project_1.srcs/sources_1/new/cla_4.v" Line 1. Module cla_4 doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "D:/Progress/Vivado/project_1/project_1.srcs/sources_1/new/cla_4.v" Line 1. Module cla_4 doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "D:/Progress/Vivado/project_1/project_1.srcs/sources_1/new/cla_4.v" Line 1. Module cla_4 doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "D:/Progress/Vivado/project_1/project_1.srcs/sources_1/new/cla_4.v" Line 1. Module cla_4 doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "D:/Progress/Vivado/project_1/project_1.srcs/sources_1/new/cla_adder32.v" Line 1. Module cla_adder32 doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "D:/Progress/Vivado/project_1/project_1.srcs/sources_1/new/cla_4.v" Line 1. Module cla_4 doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "D:/Progress/Vivado/project_1/project_1.srcs/sources_1/new/cla_4.v" Line 1. Module cla_4 doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "D:/Progress/Vivado/project_1/project_1.srcs/sources_1/new/cla_4.v" Line 1. Module cla_4 doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "D:/Progress/Vivado/project_1/project_1.srcs/sources_1/new/cla_4.v" Line 1. Module cla_4 doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "D:/Progress/Vivado/project_1/project_1.srcs/sources_1/new/cla_4.v" Line 1. Module cla_4 doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "D:/Progress/Vivado/project_1/project_1.srcs/sources_1/new/cla_4.v" Line 1. Module cla_4 doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "D:/Progress/Vivado/project_1/project_1.srcs/sources_1/new/cla_4.v" Line 1. Module cla_4 doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "D:/Progress/Vivado/project_1/project_1.srcs/sources_1/new/cla_4.v" Line 1. Module cla_4 doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "D:/Progress/Vivado/project_1/project_1.srcs/sources_1/new/cla_4.v" Line 1. Module cla_4 doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "D:/Progress/Vivado/project_1/project_1.srcs/sources_1/new/cla_4.v" Line 1. Module cla_4 doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "D:/Progress/Vivado/project_1/project_1.srcs/sources_1/new/cla_4.v" Line 1. Module cla_4 doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "D:/Progress/Vivado/project_1/project_1.srcs/sources_1/new/mux.v" Line 2. Module mux doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "D:/Progress/Vivado/project_1/project_1.srcs/sources_1/new/mux.v" Line 2. Module mux doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "D:/Progress/Vivado/project_1/project_1.srcs/sources_1/new/mux.v" Line 2. Module mux doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "D:/Progress/Vivado/project_1/project_1.srcs/sources_1/new/forward_unit.v" Line 9. Module forward_unit doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "D:/Progress/Vivado/project_1/project_1.srcs/sources_1/new/ex_mem_regs.v" Line 2. Module ex_mem_regs doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "D:/Progress/Vivado/project_1/project_1.srcs/sources_1/new/mem_stage.v" Line 2. Module mem_stage doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "D:/Progress/Vivado/project_1/project_1.srcs/sources_1/new/mux.v" Line 2. Module mux doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "D:/Progress/Vivado/project_1/project_1.srcs/sources_1/new/mem_wb_regs.v" Line 2. Module mem_wb_regs doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "D:/Progress/Vivado/project_1/project_1.srcs/sources_1/new/mux.v" Line 2. Module mux doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "D:/Progress/Vivado/project_1/project_1.srcs/sources_1/new/mux.v" Line 2. Module mux doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "D:/Progress/Vivado/project_1/project_1.srcs/sources_1/new/mux.v" Line 2. Module mux doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "D:/Progress/Vivado/project_1/project_1.srcs/sources_1/new/mux.v" Line 2. Module mux doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "D:/Progress/Vivado/project_1/project_1.srcs/sources_1/new/data_memory.v" Line 2. Module data_memory doesn't have a timescale but at least one module in design has a timescale.
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling module xil_defaultlib.instr_memory
+Compiling module xil_defaultlib.main_control
+Compiling module xil_defaultlib.alu_control
+Compiling module xil_defaultlib.control
+Compiling module xil_defaultlib.pc_reg
+Compiling module xil_defaultlib.if_stage
+Compiling module xil_defaultlib.if_id_regs
+Compiling module xil_defaultlib.instr_decode
+Compiling module xil_defaultlib.registers
+Compiling module xil_defaultlib.id_stage
+Compiling module xil_defaultlib.id_ex_regs
+Compiling module xil_defaultlib.Shifter
+Compiling module xil_defaultlib.cla_4
+Compiling module xil_defaultlib.cla_adder32
+Compiling module xil_defaultlib.Adder
+Compiling module xil_defaultlib.alu
+Compiling module xil_defaultlib.branch_judge
+Compiling module xil_defaultlib.mux
+Compiling module xil_defaultlib.forward_unit
+Compiling module xil_defaultlib.mux3_1
+Compiling module xil_defaultlib.ex_stage
+Compiling module xil_defaultlib.ex_mem_regs
+Compiling module xil_defaultlib.mem_stage
+Compiling module xil_defaultlib.mem_wb_regs
+Compiling module xil_defaultlib.wb_stage
+Compiling module xil_defaultlib.datapath
+Compiling module xil_defaultlib.riscv
+Compiling module xil_defaultlib.data_memory
+Compiling module xil_defaultlib.riscv_top
+Compiling module xil_defaultlib.tb_riscv_top
+Compiling module xil_defaultlib.glbl
+Built simulation snapshot tb_riscv_top_behav

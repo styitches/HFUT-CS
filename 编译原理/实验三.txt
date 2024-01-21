@@ -1,0 +1,409 @@
+#include<iostream>
+#include<string>
+#include<map>
+#include<vector>
+#include<stack>
+#include<queue>
+#include<iomanip>
+#define MAX 100
+using namespace std;
+map<char, int>Get_num;
+string Nonterminal_proc[MAX];   //存放非终结符的产生式集合
+string First[MAX];   //每一个符号的first集
+string word;
+vector<string>proc;//存所有产生式
+char getv[MAX] = { '#','+','*', '(',')','i','e','S','E','F','T' };//初始化Vn和Vt
+int table[30][30];         //分析表
+int t[30][30];        //-1移进-2规约
+int num = 10; int Num_terminal = 6;   //numvt后面是非终结符集合，前面是终结符集合，numvt表示空
+int e[MAX][3]; int head[MAX]; int nume = 0;
+struct Item {        //一个项目
+	int num_proc;       //产生式编号
+	int local;        //.的位置
+	string Set;   //集合
+};
+
+//空格输出
+void Edit(int i) {
+	for (; i >= 0; i--)
+		cout << " ";
+}
+
+//初始化函数
+void Setting_f() {
+	memset(head, -1, sizeof(head));
+	memset(table, -1, sizeof(table));
+	memset(t, -1, sizeof(t));//memset函数将head，table，tb_s_r的值初始化为-1
+	nume = 0;
+}
+
+//初始化产生式
+void Setting_proc() {
+	Setting_f(); //将head，table，tb_s_r的值初始化为 - 1
+	for (int i = 0; i < strlen(getv); i++) {
+		Get_num[getv[i]] = i;
+	}
+	//存入产生式
+	proc.push_back("SE");
+	proc.push_back("EE+T");
+	proc.push_back("ET");
+	proc.push_back("TT*F");
+	proc.push_back("TF");
+	proc.push_back("F(E)");
+	proc.push_back("Fi");
+	cout << "文法:" << endl;
+	//输出文法
+	for (int i = 0; i < proc.size(); i++) {
+		string s = proc[i];
+		s.insert(1, "->");
+		cout << s << endl;
+	}
+}
+
+//获得非终结符的产生式
+void Get_nonterminalproc() {
+	for (int i = 0; i < proc.size(); i++) {
+		int temp = Get_num[proc[i][0]];
+		Nonterminal_proc[temp] += char('0' + i);
+	}
+}
+
+//判断是否求了first集
+bool Fisrt_finish[MAX];
+
+//求单个字句的first集
+void Creat_str_first(int nv, int nump) {
+	int temp = Get_num[proc[nump][1]];  //产生式推出来的首符
+	Fisrt_finish[nump] = 1;               //标记
+	if (temp <= Num_terminal)First[nv] += char('0' + temp);  //终结符，string类型存储
+	else {//非终极符
+		for (int i = 0; i < Nonterminal_proc[temp].size(); i++) {    //全部temp能够推出来的符号相应的产生式
+			if (proc[nump][0] == proc[nump][1])continue; //跳过左递归的产生式
+			Creat_str_first(temp, Nonterminal_proc[temp][i] - '0');//string类型
+		}
+		First[nv] += First[temp];                  //回溯时候沿途保存
+	}
+}
+
+//求全部first集
+void Get_all_first() {
+	Get_nonterminalproc();
+	for (int i = 1; i <= Num_terminal; i++) {             // 终结符first集合是它自己.
+		First[i] = char('0' + i);
+	}
+	for (int i = 0; i < proc.size(); i++) {
+		if (proc[i][0] == proc[i][1])continue; //跳过左递归的产生式
+		if (Fisrt_finish[i])continue;              //已经生成。
+		int temp = Get_num[proc[i][0]];
+		Creat_str_first(temp, i);
+	}
+}
+
+//判断两个项目是否相等
+bool Judge_item_equal(Item a, Item b) {
+	if (a.Set == b.Set && a.local == b.local && a.num_proc == b.num_proc)return 1;
+	return 0;
+}
+
+//判断项目是否在项目集族中
+bool Judge_iteminC(Item a, vector<Item> c) {
+	for (int i = 0; i < c.size(); i++) {
+		if (Judge_item_equal(a, c[i]))return 1;
+	}
+	return 0;
+}
+
+//将两项目相加
+vector<Item>  Add_CaCb(vector<Item>a, vector<Item>b) {
+	for (int i = 0; i < b.size(); i++) {
+		if (Judge_iteminC(b[i], a))continue;
+		else
+			a.push_back(b[i]);
+	}
+	return a;
+}
+
+//判断两个项目集族是否相等
+bool Judge_C_equal(vector<Item> a, vector<Item> b) {
+	if (a.size() != b.size())return 0;
+	for (int i = 0; i < a.size(); i++) {
+		if (!Judge_iteminC(a[i], b))return 0;
+	}
+	return 1;
+}
+
+//查找项目在集族中的序号，否则返回-1
+int Find_iteminC(vector<Item>a, vector<vector<Item> >b) {
+	for (int i = 0; i < b.size(); i++) {
+		if (Judge_C_equal(a, b[i]))return i;
+	}
+	return -1;
+}
+
+//构造项目集族边
+void Add_egde(int from, int to, int weight) {
+	e[nume][0] = to;
+	e[nume][1] = head[from];
+	head[from] = nume;
+	e[nume++][2] = weight;
+}
+
+//求项目t的闭包
+vector<Item> Creat_closure(Item t) {
+	vector<Item> I;//状态
+	I.push_back(t);
+	queue<Item> q;//临时队列
+	q.push(t);
+	while (!q.empty()) {
+		Item left = q.front();
+		q.pop();
+		if (left.local == proc[left.num_proc].size())//归约式
+			continue;
+		int afterpoint = Get_num[proc[left.num_proc][left.local]];
+		if (afterpoint <= Num_terminal) //终结符  
+			continue;
+		for (int i = 0; i < Nonterminal_proc[afterpoint].size(); i++) {
+			Item c;
+			c.local = 1;
+			c.num_proc = Nonterminal_proc[afterpoint][i] - '0';
+			if (proc[left.num_proc].size() - left.local == 1)   // A->B.C
+				c.Set += left.Set;
+			else {                          //形如A->B.CF
+				int aaftersign = Get_num[proc[left.num_proc][left.local + 1]];
+				c.Set += First[aaftersign];
+			}
+			if (!Judge_iteminC(c, I)) {           //如果是新的项目就加入。
+				q.push(c);
+				I.push_back(c);
+			}
+		}
+	}
+	return I;
+}
+
+vector<vector<Item> >v;             //项目集族
+
+//求项目集族
+void Creat_C() {
+	vector<Item>I;
+	Item t;
+	t.num_proc = 0; t.local = 1; t.Set += '0';    //初始的项目集0
+	I = Creat_closure(t);
+	queue<vector<Item> >q;        //广度优先求项目集族
+	q.push(I);
+	v.push_back(I);
+	while (!q.empty()) {
+		vector<Item> left = q.front();
+		q.pop();
+		for (int i = 1; i <= num; i++) {
+			if (i == Num_terminal)continue;//终结符循环完毕返回while
+			vector<Item> temp;
+			for (int j = 0; j < left.size(); j++) {                               //left导出的所有产生式
+				if (left[j].local == proc[left[j].num_proc].size())continue;   //跳过归约式
+				int aftersign = Get_num[proc[left[j].num_proc][left[j].local]];//否则求出点后面紧跟的字符
+				if (aftersign == i) {
+					Item tempt;
+					tempt.Set = left[j].Set;
+					tempt.local = left[j].local + 1;
+					tempt.num_proc = left[j].num_proc;
+					temp = Add_CaCb(temp, Creat_closure(tempt));
+				}
+			}
+			if (temp.size() == 0)continue;          //此状态内的项目均为归约的
+			int num_left = Find_iteminC(left, v);   //由产生式I产生的项目在项目集族v是否存在，若存在则返回标号
+			int num_new = Find_iteminC(temp, v);    //产生的新项目在项目集族v中是否存在，若存在则返回标号
+			if (num_new == -1) {                     //新项目在v中没有，则加入更新项目集族
+				v.push_back(temp);
+				q.push(temp);
+				Add_egde(num_left, v.size() - 1, i);//加入边，权为读入的符号，i为该符号的编号
+			}
+			else {                                   //已含有
+				Add_egde(num_left, num_new, i);
+			}
+		}
+	}
+}
+
+vector<string>C_proc;//存放每个项目集族的所有产生式
+
+vector<string>print_proce;//存放每个项目集族的不重复的产生式
+
+////判断两个字符串是否相等
+bool Judge_stringequal(string a, string b)
+{
+	if (a.length() != b.length())
+		return false;
+	else
+	{
+		for (int i = 0; i < a.length() - 1; i++)
+			if (a[i] != b[i])
+				return false;
+	}
+	return true;
+}
+
+//存储.产生式到proce
+void Creat_allproc(string proce, int id, char getv)
+{
+	proce.insert(id, ".");
+	proce.insert(1, "->");
+	proce += "  ,";
+	proce += getv;
+	C_proc.push_back(proce);
+}
+
+//构建分析表
+bool Creat_table() {
+	for (int i = 0; i < v.size(); i++) {          //遍历图
+		for (int j = head[i]; j != -1; j = e[j][1]) {
+			table[i][e[j][2]] = e[j][0];
+			t[i][e[j][2]] = -1;             //移近项-1。
+		}
+	}
+	for (int i = 0; i < v.size(); i++) {             //遍历全部项目
+		for (int j = 0; j < v[i].size(); j++) {
+			if (v[i][j].local == proc[v[i][j].num_proc].size()) {  //归约项
+				for (int k = 0; k < v[i][j].Set.size(); k++) {
+					if (table[i][(v[i][j].Set)[k] - '0'] != -1)return 0;           //多重入口，报错.
+					if ((v[i][j].Set)[k] == '0' && v[i][j].num_proc == 0)
+						table[i][(v[i][j].Set)[k] - '0'] = -3;           //接受态。
+					else {
+						table[i][(v[i][j].Set)[k] - '0'] = v[i][j].num_proc;
+						t[i][(v[i][j].Set)[k] - '0'] = -2;            //归约态
+					}
+				}
+			}
+		}
+	}
+	return 1;
+}
+
+//打印分析表
+void print_table()
+{
+	cout << "LR(1)分析表：" << endl;
+	cout << "状态   " << "         actoin     " << "          goto   " << endl;
+	for (int j = 0; j <= num; j++)
+	{
+		if (j == Num_terminal)continue;
+		if (j == Num_terminal + 1)
+		{
+			cout << "     ";
+			continue;
+		}
+		cout << "    " << getv[j];
+	}
+	cout << endl;
+	for (int i = 0; i < v.size(); i++)
+	{
+		cout << i << "   ";
+		for (int j = 0; j <= num; j++)
+		{
+			if (j == Num_terminal)continue;
+			if (table[i][j] == -3)  cout << "acc" << "  ";       //接受
+			else if (table[i][j] == -1)cout << "     ";        //空
+			else if (t[i][j] == -1)cout << "s" << table[i][j] << "   ";  //移近
+			else if (t[i][j] == -2)cout << "r" << table[i][j] << "   ";  //归约
+		}
+		cout << endl;
+	}
+}
+
+//记录当前状态并输出
+void  record(int count, stack<int>state, stack<int>wd, int i) {
+	int nf = 0;
+	cout << count + 1 << '\t' << '\t';
+	stack<int>temp;
+	while (!state.empty()) {
+		temp.push(state.top());
+		state.pop();
+	}
+	while (!temp.empty()) {
+		nf = nf + 2;
+		cout << temp.top() << ' ';
+		if (temp.top() > 10)
+			nf++;
+		temp.pop();
+	}
+	Edit(20 - nf);
+	nf = 0;
+	while (!wd.empty()) {
+		temp.push(wd.top());
+		wd.pop();
+	}
+	while (!temp.empty()) {
+		cout << getv[temp.top()];
+		temp.pop();
+		nf++;
+	}
+	Edit(20 - nf + i - word.size());
+	nf = 0;
+	for (int j = i; j < word.size(); j++)
+		cout << word[j];
+	cout << '\t' << '\t';
+}
+
+//分析
+bool analyze() {
+	cout << "       " << word << "的分析过程：" << endl;
+	cout << "步骤            状态栈              符号栈           输入串             动作说明" << endl;
+	stack<int>state;   //状态栈
+	stack<int>sign;	   //符号栈
+	int count = 0;
+	state.push(0);     //初始化
+	sign.push(0);
+	for (int i = 0;;) {       //i，读入文本的
+		int now = state.top();
+		if (table[now][Get_num[word[i]]] == -1)    // 空白，报错误
+			return 0;
+		if (table[now][Get_num[word[i]]] == -3) {  //接受态
+			record(count++, state, sign, i);
+			cout << "Acc:分析成功" << endl;
+			return 1;
+		}
+		if (t[now][Get_num[word[i]]] == -1) {       //移进项
+			record(count++, state, sign, i);
+			int newstate = table[now][Get_num[word[i]]];
+			cout << "action[" << now << "," << Get_num[word[i]] << "]=" << 'S' << newstate;
+			cout << "，状态" << newstate << "入栈" << endl;
+			sign.push(Get_num[word[i]]);
+			state.push(newstate);
+			i++;
+		}
+		else if (t[now][Get_num[word[i]]] == -2) {         //归约
+			record(count++, state, sign, i);
+
+			int numpro = table[now][Get_num[word[i]]];   //用该产生式归约
+			int len = proc[numpro].size() - 1;
+			for (int i = 0; i < len; i++) {                 //出栈
+				sign.pop();
+				state.pop();
+			}
+			sign.push(Get_num[proc[numpro][0]]);    //新入
+			int cur = state.top();
+			cout << proc[numpro][0] << "->";
+			for (int i = 1; i <= len; i++)
+				cout << proc[numpro][i];
+			cout << "归约," << "goto[" << cur << "," << Get_num[word[i]] << "]=" << table[cur][Get_num[proc[numpro][0]]];
+			cout << "入栈" << endl;
+			state.push(table[cur][Get_num[proc[numpro][0]]]);
+		}
+	}
+	return 1;
+}
+
+int main() {
+	Setting_proc();
+	Get_all_first();
+	Creat_C();
+	if (!Creat_table()) {
+		cout << "非LR(1)文法！" << endl;
+		return 0;
+	}
+	print_table();
+	word = "i+i*i";
+	if (!analyze())
+		cout << "error!" << endl;
+	getchar();
+	return 0;
+}

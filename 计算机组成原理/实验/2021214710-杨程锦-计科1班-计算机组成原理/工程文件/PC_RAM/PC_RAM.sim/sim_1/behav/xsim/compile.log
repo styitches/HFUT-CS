@@ -1,0 +1,4 @@
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/Progress/Vivado/PC_RAM/PC_RAM.srcs/sources_1/new/RAM.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module RAM
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/Progress/Vivado/PC_RAM/PC_RAM.srcs/sim_1/new/sim_ram.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module sim_ram

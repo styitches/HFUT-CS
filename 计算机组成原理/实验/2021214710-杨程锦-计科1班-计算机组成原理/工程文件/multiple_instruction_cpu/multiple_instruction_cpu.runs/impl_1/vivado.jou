@@ -1,0 +1,12 @@
+#-----------------------------------------------------------
+# Vivado v2018.3 (64-bit)
+# SW Build 2405991 on Thu Dec  6 23:38:27 MST 2018
+# IP Build 2404404 on Fri Dec  7 01:43:56 MST 2018
+# Start of session at: Tue Jun 20 19:34:09 2023
+# Process ID: 26788
+# Current directory: D:/Progress/Vivado/multiple_instruction_cpu/multiple_instruction_cpu.runs/impl_1
+# Command line: vivado.exe -log cpu_10.vdi -applog -product Vivado -messageDb vivado.pb -mode batch -source cpu_10.tcl -notrace
+# Log file: D:/Progress/Vivado/multiple_instruction_cpu/multiple_instruction_cpu.runs/impl_1/cpu_10.vdi
+# Journal file: D:/Progress/Vivado/multiple_instruction_cpu/multiple_instruction_cpu.runs/impl_1\vivado.jou
+#-----------------------------------------------------------
+source cpu_10.tcl -notrace

@@ -1,0 +1,417 @@
+//系统的主要功能
+//（1）屏幕上出现一个界面，让操作员能够方便的选择所需要进行的操作，包括登记入住、查询房间的入住情况、查询当前费用、结账退房等操作。登记入住的信息主要有：客人姓名、房间号、入住时间、计费方式（按天或小时）、单价、押金房间信息：房间号、是否有人入住、房间标准、每天单价、小时单价 。
+//（2）对不同标准的房间实施不同的收费标准，也可以按天收费或按小时收费，可根据顾客需要在登记的入住的时候进行选择。
+//（3）在结账退房时，根据入住的时间，计费方式和房间单价计算出总费用。
+//分步实施：
+//（1）初步完成总体设计，搭好框架，确定人机对话的界面，确定函数个数；
+//（2）完成最低要求：建立房间列表，完成登记入住、查询房间入住情况等功能。
+//（3）进一步要求：完成计费和费用查询功能。
+#include<iostream>
+#include<Windows.h>
+#include<stdio.h>
+using namespace std;
+
+int way;
+int choice;
+
+class Room {
+public:
+	Room() {
+		m = 0;
+	}
+	int num;
+	bool m ;
+	int dayfee;
+	int hourfee;
+	int fee;
+	int inhour, inminute, inmonth, inday;
+};
+
+class Lowroom:public Room
+{
+public:
+	Lowroom() {
+		dayfee = 450;
+		hourfee = 30;
+	}
+;
+};
+
+class intermediateroom :public Room
+{
+public:
+	intermediateroom() {
+		dayfee = 520;
+		hourfee = 45;
+	}
+};
+
+class advancedroom :public Room
+{
+public:
+	advancedroom() {
+		dayfee = 680;
+		hourfee = 60;
+	}
+};
+
+Lowroom a0, a1, a2, a3, a4, a5, a6, a7, a8, a9;
+intermediateroom  b0, b1, b2, b3, b4;
+advancedroom c0, c1, c2;
+Lowroom a[10] = { a0, a1, a2, a3, a4, a5, a6, a7, a8, a9 };
+intermediateroom b[5] = { b0, b1, b2, b3, b4 };
+advancedroom c[3] = { c0, c1, c2 };
+
+void setroom() {
+	for (int i = 0; i < 10; i++) {
+		a[i].num = 101 + i;
+	}
+
+	for (int i = 0; i < 5; i++) {
+		b[i].num = 201 + i;
+	}
+
+	for (int i = 0; i < 3; i++) {
+		c[i].num = 301 + i;
+	}
+}
+
+void menu() {
+	cout << "************酒店房间登记与计费管理系统************" << endl;
+	cout << "1、登记入住" << endl;
+	cout << "2、查询房间的入住情况" << endl;
+	cout << "3、查询当前费用" << endl;
+	cout << "4、结账退房" << endl;
+	cout << "5、退出" << endl;
+	cout << "请选择您的操作：" << endl;
+}
+
+void regist() {
+	cout << "1、标准间   450/day   30/hour  ( 房间号：101--110)" << endl;
+	cout << "2、商务间   520/day   45/hour  ( 房间号：201--205)" << endl;
+	cout << "3、豪华间   680/day   60/hour  ( 房间号：301--303)" << endl;
+	cout << "请选择你要入住的房间:" << endl;
+	cin >> choice;	
+}
+
+void information() {
+	/*登记入住的信息主要有：客人姓名、房间号、入住时间、计费方式（按天或小时）、单价、押金房间信息：房间号、是否有人入住、房间标准、每天单价、小时单价 。*/
+	string name;
+	int innum;
+	cout << "************请输入入住信息************" << endl;
+	cout << "姓名：";
+	cin >> name;
+	cout << "房间号：";
+	cin >> innum;
+	cout << "入住时间（月 日 时 分）：";
+	if (choice == 1) {
+		for (int i = 0; i < 10; i++) {
+			if (innum == a[i].num) {
+				cin >> a[i].inmonth >> a[i].inday >> a[i].inhour >> a[i].inminute;
+			}
+		}
+	}
+	if (choice == 2) {
+		for (int i = 0; i < 5; i++) {
+			if (innum == b[i].num) {
+				cin >> b[i].inmonth >> b[i].inday >> b[i].inhour >> b[i].inminute;
+			}
+		}
+	}
+	if (choice == 3) {
+		for (int i = 0; i < 3; i++) {
+			if (innum == c[i].num) {
+				cin >> c[i].inmonth >> c[i].inday >> c[i].inhour >> c[i].inminute;
+			}
+		}
+	}
+	
+	
+	cout << "计费方式（1、按天 2、按小时）：";
+	cin >> way;
+	
+	if (innum / 100 == 1) {
+		for (int i = 0; i < 10; i++) {
+			if (innum == a[i].num) {
+				a[i].m = 1;
+			}
+		}
+	}
+	else if (innum / 100 == 2) {
+		for (int i = 0; i < 5; i++) {
+			if (innum == b[i].num) {
+				b[i].m = 1;
+			}
+		}
+	}
+	else if (innum / 100 == 3) {
+		for (int i = 0; i < 3; i++) {
+			if (innum == c[i].num) {
+				c[i].m = 1;
+			}
+		}
+	}
+	else cout << "查无此房" << endl;
+};
+
+void check() {
+	cout << "请输入查询房间号：";
+	int checknum;
+	cin >> checknum;
+
+	if (checknum / 100 == 1) {
+		for (int i = 0; i < 10; i++) {
+			if (checknum == a[i].num) {
+				if (a[i].m == 0) {
+					cout << "该房间无人居住" << endl;
+				}
+				else cout << "该房间有人正在居住" << endl;
+			}
+		}
+	}
+	else if (checknum / 100 == 2) {
+		for (int i = 0; i < 5; i++) {
+			if (checknum == b[i].num) {
+				if (b[i].m == 0) {
+					cout << "该房间无人居住" << endl;
+				}
+				else cout << "该房间有人正在居住" << endl;
+			}
+		}
+	}
+	else if (checknum / 100 == 3) {
+		for (int i = 0; i < 3; i++) {
+			if (checknum == c[i].num) {
+				if (c[i].m == 0) {
+					cout << "该房间无人居住" << endl;
+				}
+				else cout << "该房间有人正在居住" << endl;
+			}
+		}
+	}
+	else cout << "查无此房" << endl;
+}
+
+void checkfee() {
+	cout << "请输入房间号：" << endl;
+	int checknum;
+	cin >> checknum;
+	SYSTEMTIME sys;
+	GetLocalTime(&sys);
+	if (way == 1) {
+		if (checknum / 100 == 1) {
+			for (int i = 0; i < 10; i++) {
+				if (checknum == a[i].num) {
+					if (a[i].m == 0) {
+						cout << "该房间还无人居住" << endl;
+					}
+					if (a[i].m == 1) {
+						a[i].fee = a1.dayfee * (sys.wDay - a[i].inday);
+						cout << "目前费用为：" << a[i].fee << endl;
+					}
+				}
+			}
+		}
+		else if (checknum / 100 == 2) {
+			for (int i = 0; i < 5; i++) {
+				if (checknum == b[i].num) {
+					if (b[i].m == 0) {
+						cout << "该房间还无人居住" << endl;
+					}
+					if (b[i].m == 1) {
+						b[i].fee = b1.dayfee * (sys.wDay - b[i].inday);
+						cout << "目前费用为：" << b[i].fee << endl;
+					}
+				}
+			}
+		}
+		else if (checknum / 100 == 3) {
+			for (int i = 0; i < 3; i++) {
+				if (checknum == c[i].num) {
+					if (c[i].m == 0) {
+						cout << "该房间还无人居住" << endl;
+					}
+					if (c[i].m == 1) {
+						c[i].fee = c1.dayfee * (sys.wDay - c[i].inday);
+						cout << "目前费用为：" << c[i].fee << endl;
+					}
+				}
+			}
+		}
+		}
+	if (way == 2) {
+		if (checknum / 100 == 1) {
+			for (int i = 0; i < 10; i++) {
+				if (checknum == a[i].num) {
+					if (a[i].m == 0) {
+						cout << "该房间还无人居住" << endl;
+					}
+					if (a[i].m == 1) {
+						a[i].fee = a1.hourfee * (sys.wHour - a[i].inhour);
+						cout << "目前费用为：" << a[i].fee << endl;
+					}
+				}
+			}
+		}
+		else if (checknum / 100 == 2) {
+			for (int i = 0; i < 5; i++) {
+				if (checknum == b[i].num) {
+					if (b[i].m == 0) {
+						cout << "该房间还无人居住" << endl;
+					}
+					if (b[i].m == 1) {
+						b[i].fee = b1.hourfee * (sys.wHour - b[i].inhour);
+						cout << "目前费用为：" << b[i].fee << endl;
+					}
+				}
+			}
+		}
+		else if (checknum / 100 == 3) {
+			for (int i = 0; i < 3; i++) {
+				if (checknum == c[i].num) {
+					if (c[i].m == 0) {
+						cout << "该房间还无人居住" << endl;
+					}
+					if (c[i].m == 1) {
+						c[i].fee = c1.hourfee * (sys.wHour - c[i].inhour);
+						cout << "目前费用为：" << c[i].fee << endl;
+					}
+				}
+			}
+		}
+	}
+
+}
+
+void checkout() {
+	cout << "请输入房间号：" << endl;
+	int checknum;
+	cin >> checknum;
+	SYSTEMTIME sys;
+	GetLocalTime(&sys);
+	if (way == 1) {
+		if (checknum / 100 == 1) {
+			for (int i = 0; i < 10; i++) {
+				if (checknum == a[i].num) {
+					if (a[i].m == 0) {
+						cout << "该房间还无人居住" << endl;
+					}
+					if (a[i].m == 1) {
+						a[i].fee = a1.dayfee * (sys.wDay - a[i].inday);
+						cout << "总费用为：" << a[i].fee << endl;
+						a[i].m = 0;
+					}
+				}
+			}
+		}
+		else if (checknum / 100 == 2) {
+			for (int i = 0; i < 5; i++) {
+				if (checknum == b[i].num) {
+					if (b[i].m == 0) {
+						cout << "该房间还无人居住" << endl;
+					}
+					if (b[i].m == 1) {
+						b[i].fee = b1.dayfee * (sys.wDay - b[i].inday);
+						cout << "总费用为：" << b[i].fee << endl;
+						b[i].m = 0;
+					}
+				}
+			}
+		}
+		else if (checknum / 100 == 3) {
+			for (int i = 0; i < 3; i++) {
+				if (checknum == c[i].num) {
+					if (c[i].m == 0) {
+						cout << "该房间还无人居住" << endl;
+					}
+					if (c[i].m == 1) {
+						c[i].fee = c1.dayfee * (sys.wDay - c[i].inday);
+						cout << "总费用为：" << c[i].fee << endl;
+						c[i].m = 0;
+					}
+				}
+			}
+		}
+	}
+	if (way == 2) {
+		if (checknum / 100 == 1) {
+			for (int i = 0; i < 10; i++) {
+				if (checknum == a[i].num) {
+					if (a[i].m == 0) {
+						cout << "该房间还无人居住" << endl;
+					}
+					if (a[i].m == 1) {
+						a[i].fee = a1.hourfee * (sys.wHour - a[i].inhour);
+						cout << "总费用为：" << a[i].fee << endl;
+						a[i].m = 0;
+					}
+				}
+			}
+		}
+		else if (checknum / 100 == 2) {
+			for (int i = 0; i < 5; i++) {
+				if (checknum == b[i].num) {
+					if (b[i].m == 0) {
+						cout << "该房间还无人居住" << endl;
+					}
+					if (b[i].m == 1) {
+						b[i].fee = b1.hourfee * (sys.wHour - b[i].inhour);
+						cout << "总费用为：" << b[i].fee << endl;
+						b[i].m = 0;
+					}
+				}
+			}
+		}
+		else if (checknum / 100 == 3) {
+			for (int i = 0; i < 3; i++) {
+				if (checknum == c[i].num) {
+					if (c[i].m == 0) {
+						cout << "该房间还无人居住" << endl;
+					}
+					if (c[i].m == 1) {
+						c[i].fee = c1.hourfee * (sys.wHour - c[i].inhour);
+						cout << "总费用为：" << c[i].fee << endl;
+						c[i].m = 0;
+					}
+				}
+			}
+		}
+	}
+}
+
+int main() {
+	setroom();
+	while (true) {
+		menu();
+		int op;
+		cin >> op;
+		system("cls");
+		switch (op)
+		{
+		case 1:
+			regist();
+			system("cls");
+			information();
+			system("cls");
+			break;
+		case 2:
+			check();
+			system("pause");
+			system("cls");
+			break;
+		case 3:
+			checkfee();
+			system("pause");
+			system("cls");
+			break;
+		case 4:
+			checkout();
+			system("pause");
+			system("cls");
+			break;
+		case 5:
+			return 0;
+		}
+	}
+
+}

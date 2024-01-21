@@ -1,0 +1,61 @@
+#-----------------------------------------------------------
+# Vivado v2018.3 (64-bit)
+# SW Build 2405991 on Thu Dec  6 23:38:27 MST 2018
+# IP Build 2404404 on Fri Dec  7 01:43:56 MST 2018
+# Start of session at: Sun Dec 24 21:47:27 2023
+# Process ID: 49476
+# Current directory: D:/Progress/Vivado/project_1
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent17184 D:\Progress\Vivado\project_1\project_1.xpr
+# Log file: D:/Progress/Vivado/project_1/vivado.log
+# Journal file: D:/Progress/Vivado/project_1\vivado.jou
+#-----------------------------------------------------------
+start_gui
+open_project D:/Progress/Vivado/project_1/project_1.xpr
+update_compile_order -fileset sources_1
+launch_simulation
+source tb_riscv_top.tcl
+current_wave_config {Untitled 1}
+add_wave {{/tb_riscv_top/uut/instr_memory_inst}} 
+current_wave_config {Untitled 1}
+add_wave {{/tb_riscv_top/uut/riscv_inst/datapath_inst/id_stage_inst/registers_inst/regs}} 
+restart
+restart
+run all
+close_sim
+launch_simulation
+source tb_riscv_top.tcl
+current_wave_config {Untitled 2}
+add_wave {{/tb_riscv_top/uut/instr_memory_inst/instr}} 
+current_wave_config {Untitled 2}
+add_wave {{/tb_riscv_top/uut/riscv_inst/datapath_inst/id_stage_inst/registers_inst/regs}} 
+restart
+restart
+run all
+close_sim
+launch_simulation
+source tb_riscv_top.tcl
+current_wave_config {Untitled 3}
+add_wave {{/tb_riscv_top/uut/instr_memory_inst/instr}} 
+restart
+restart
+run all
+current_wave_config {Untitled 3}
+add_wave {{/tb_riscv_top/uut/riscv_inst/datapath_inst/id_stage_inst/registers_inst/regs}} 
+restart
+restart
+run 10 us
+run 10 us
+run 10 us
+run 10 us
+run 10 us
+close_sim
+launch_simulation
+source tb_riscv_top.tcl
+current_wave_config {Untitled 4}
+add_wave {{/tb_riscv_top/uut/instr_memory_inst/instr}} 
+current_wave_config {Untitled 4}
+add_wave {{/tb_riscv_top/uut/riscv_inst/datapath_inst/id_stage_inst/registers_inst/regs}} 
+restart
+restart
+run 10 us
+close_sim

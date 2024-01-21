@@ -1,0 +1,36 @@
+# compile verilog/system verilog design source files
+verilog xil_defaultlib  --include "../../../../project_1.srcs/sources_1/new" \
+"../../../../project_1.srcs/sources_1/new/Adder.v" \
+"../../../../project_1.srcs/sources_1/new/Shifter.v" \
+"../../../../project_1.srcs/sources_1/new/alu.v" \
+"../../../../project_1.srcs/sources_1/new/branch_judge.v" \
+"../../../../project_1.srcs/sources_1/new/cla_4.v" \
+"../../../../project_1.srcs/sources_1/new/cla_adder32.v" \
+"../../../../project_1.srcs/sources_1/new/control.v" \
+"../../../../project_1.srcs/sources_1/new/data_memory.v" \
+"../../../../project_1.srcs/sources_1/new/datapath.v" \
+"../../../../project_1.srcs/sources_1/new/ex_mem_regs.v" \
+"../../../../project_1.srcs/sources_1/new/ex_stage.v" \
+"../../../../project_1.srcs/sources_1/new/forward_unit.v" \
+"../../../../project_1.srcs/sources_1/new/id_ex_regs.v" \
+"../../../../project_1.srcs/sources_1/new/id_stage.v" \
+"../../../../project_1.srcs/sources_1/new/if_id_regs.v" \
+"../../../../project_1.srcs/sources_1/new/if_stage.v" \
+"../../../../project_1.srcs/sources_1/new/instr_decode.v" \
+"../../../../project_1.srcs/sources_1/new/instr_memory.v" \
+"../../../../project_1.srcs/sources_1/new/mem_stage.v" \
+"../../../../project_1.srcs/sources_1/new/mem_wb_regs.v" \
+"../../../../project_1.srcs/sources_1/new/mux.v" \
+"../../../../project_1.srcs/sources_1/new/mux3_1.v" \
+"../../../../project_1.srcs/sources_1/new/pc_reg.v" \
+"../../../../project_1.srcs/sources_1/new/register.v" \
+"../../../../project_1.srcs/sources_1/new/riscv.v" \
+"../../../../project_1.srcs/sources_1/new/riscv_top.v" \
+"../../../../project_1.srcs/sources_1/new/wb_stage.v" \
+"../../../../project_1.srcs/sim_1/new/tb_riscv_top.v" \
+
+# compile glbl module
+verilog xil_defaultlib "glbl.v"
+
+# Do not sort compile order
+nosort

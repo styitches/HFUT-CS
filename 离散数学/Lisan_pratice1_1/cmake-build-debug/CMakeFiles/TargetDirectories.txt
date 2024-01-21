@@ -1,0 +1,3 @@
+D:/Progress/CLion/Lisan_pratice1_1/cmake-build-debug/CMakeFiles/edit_cache.dir
+D:/Progress/CLion/Lisan_pratice1_1/cmake-build-debug/CMakeFiles/Lisan_pratice1_1.dir
+D:/Progress/CLion/Lisan_pratice1_1/cmake-build-debug/CMakeFiles/rebuild_cache.dir

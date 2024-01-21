@@ -1,0 +1,340 @@
+#include<iostream>
+#include<fstream>
+#include<string>
+#include<iomanip>
+#include<windows.h> 
+#define Max 100 
+using namespace std;
+class Data//日期类，记录交易时间 
+{
+public:
+	Data() {}//缺省构造函数
+	~Data() {}//析构函数
+	void SetDate(int year, int month, int day)//接收输入的日期 
+	{
+		this->year = year;
+		this->month = month;
+		this->day = day;
+	}
+	int getyear() {
+		return year;
+	}
+	int getmonth() {
+		return month;
+	}
+	int getday() {
+		return day;
+	}
+private:
+	int year;
+	int month;
+	int day;
+};
+class Room
+{
+public:
+	Room* r[Max];//房间对象指针数组									
+	int Room_count;	//记录房间数量	
+	Room(int Number, string Type, double Price, string Whether)//构造函数 
+	{
+		this->Number = Number;
+		this->Type = Type;
+		this->Whether = Whether;
+		this->Price = Price;
+	}
+	int InputNumber() { return Number; }
+	string InputType() { return Type; }
+	string InputWhether() { return Whether; }
+	double InputPrice() { return Price; }
+	void SetWether(string _state) { Whether = _state; }
+	void show() { cout << "房号：  " << Number << "\t" << "房间类型：  " << Type << "\t" << "房间状态:  " << Whether << "\t" << "价格:   " << Price << endl; }
+protected:
+	int Number; //房号 
+	string Type;//类型 
+	string Whether;//是否有客人 
+	double Price;//价格 
+
+};
+class Guest
+{
+public:
+	Guest* g[Max];	//客人对象指针数组								
+	int Guest_count;	//记录客人数量	
+	Guest(int number, string Name, int Id, string sex, string Intime, int days) //构造函数 
+	{
+		this->Name = Name;	this->Id = Id;	this->sex = sex; this->number = number;
+		this->Intime = Intime;	this->days = days;
+	}
+	int InputNumber() { return number; }
+	string InputName() { return Name; }
+	string InputSex() { return sex; }
+	int InputDays() { return days; }
+	string InputIntime() { return Intime; }
+	int InputId() { return Id; }
+	void show()
+	{
+		cout << "顾客姓名：  " << Name << "\t 身份证号:  " << Id << "\t性别:  " << sex << "\t入住时间:  " << Intime << "\t入住天数:  " << days << endl;
+	}
+protected:
+	int number;//房号 
+	string Name;//顾客姓名 
+	int Id;//身份证号 
+	string sex;//性别 
+	string Intime;//入住时间 
+	int days; //入住天数
+};
+class Manage
+{
+public:
+	Guest* g[Max];	//客人对象指针数组								
+	int Guest_count;	//记录客人数量		
+	Room* r[Max];//房间对象指针数组									
+	int Room_count;	//记录房间数量
+/*操作函数*/
+	void IncreaseRoom();//添加客房信息 
+	void Check_In();	//删除客房信息，办理入住
+	void Check_Out();	//退房	
+	int Payment();//结账 
+	void Display(int n);//浏览所有信息（1浏览房间，2浏览顾客） 				
+	void ReadData();  //从文件中获取房间和顾客的信息
+	void WriteData(int n);//向文件中写入所有的信息
+	void WriteRoom(Room* r);//客房信息写入 
+	void WriteGuest(Guest* g);//顾客信息写入 
+/*查询菜单 */
+	void SearchMenu();//查询主菜单 
+	void SearchType();//查询所有空房间; 
+	void SearchNumber();//按房间号查询		
+};
+static int i = 0;
+void Manage::SearchMenu()
+{
+	int n;
+	system("cls");
+	cout << "====================================" << endl;
+	cout << "=         查   询   菜   单        =" << endl;
+	cout << "====================================" << endl;
+	cout << "=========  1、查 询 空 房    =======" << endl;
+	cout << "=========  2、按房间号查询   =======" << endl;
+	cout << "====================================" << endl;
+	cout << endl << "请选择: ";
+	cin >> n;
+	switch (n)
+	{
+	case 1:SearchType(); break;
+	case 2:SearchNumber(); break;
+	}
+}
+void Manage::IncreaseRoom()//添加房间 
+{
+	string type, Whether;
+	double price;
+	int number;
+	cout << "请输入房号: ";	cin >> number;
+	cout << "请输入房间类型: ";	cin >> type;
+	cout << "请输入价格: ";	cin >> price;
+	cout << "请输入房间状态: ";	cin >> Whether;
+	WriteRoom(new Room(number, type, price, Whether));
+}
+void Manage::Check_In()//删除房间信息，即入房登记
+{
+	ReadData();
+	SearchType();
+	string name, intime, sex, type;
+	int days, number;
+	int id;
+	cout << "请输入房号: ";	cin >> number;
+	cout << "请输入顾客的姓名: "; cin >> name;
+	cout << "请输入顾客的身份证号: ";	cin >> id;
+	cout << "请输入顾客的性别: "; cin >> sex;
+	cout << "请输入入住日期: ";	cin >> intime;
+	cout << "请输入入住天数: "; cin >> days;
+	for (i = 0; i < Room_count; i++)
+	{
+		if (number == r[i]->InputNumber())
+		{
+			WriteGuest(new Guest(number, name, id, sex, intime, days));
+			r[i]->SetWether("有");
+			WriteData(1);
+			cout << "住房登记成功!" << endl;
+		}
+	}
+}
+int Manage::Payment()//退房结账 
+{
+	ReadData();
+	Display(2);
+	int number;
+	cout << "请输入房号: ";		cin >> number;
+	for (i = 0; i < Guest_count; i++)
+	{
+		if (number == g[i]->InputNumber())
+		{
+			return i;
+		}
+	}
+}
+void Manage::Check_Out()
+{
+	int x = Payment();
+	ReadData();
+	for (i = 0; i < Room_count; i++)
+	{
+		if (g[x]->InputNumber() == r[i]->InputNumber())
+		{
+			r[i]->SetWether("无");
+			cout << "退房成功，您一共消费了 " << g[x]->InputDays() * r[i]->InputPrice() << " 元" << endl;
+			WriteData(1);
+		}
+	}
+	g[x] = NULL;
+	WriteData(2);
+}
+void Manage::Display(int n)//浏览所有房间信息 
+{
+	ReadData();
+	switch (n) {
+	case 1:
+		for (i = 0; i < Room_count - 1; i++)
+		{
+			cout << "房号：" << r[i]->InputNumber() << "\t房间类型: " << r[i]->InputType() << "\t房间价格: " << r[i]->InputPrice() << "\t房间状态: " << r[i]->InputWhether() << endl << endl;
+		} break;
+	case 2:
+		for (i = 0; i < Guest_count - 1; i++)
+		{
+			cout << "房间号： " << g[i]->InputNumber() << "\t顾客姓名: " << g[i]->InputName() << "\t身份证号: " << g[i]->InputId() << "\t顾客性别：" << g[i]->InputSex() << "\t入住时间: " << g[i]->InputIntime() << "\t入住天数: " << g[i]->InputDays() << endl << endl;
+		} break;
+	}
+}
+void Manage::ReadData()
+{
+	fstream Rin, Gin;
+	Rin.open("room.txt", ios::in);//打开文件 
+	if (!Rin)
+	{
+		cout << "未找到room文件，请先建立文件!" << endl;
+		return;
+	}
+	Room_count = 0;
+	while (!Rin.eof()) {
+		string type, Whether;
+		double price;
+		int number;
+		Rin >> number >> type >> price >> Whether;
+		r[Room_count++] = new Room(number, type, price, Whether);
+	}
+	Rin.close();//关闭文件 
+	Gin.open("guest.txt", ios::in);
+	if (!Gin)
+	{
+		cout << "未找到guest文件，请先建立文件!" << endl;
+		return;
+	}
+	Guest_count = 0;
+	while (!Gin.eof()) {
+		string name, intime, sex;
+		int days, number;
+		int id;
+		Gin >> number >> name >> id >> sex >> intime >> days;
+		g[Guest_count++] = new Guest(number, name, id, sex, intime, days);
+	}
+	Gin.close();
+}
+void Manage::WriteData(int n)
+{
+	switch (n)
+	{
+	case 1:
+	{
+		ofstream Rout("room.txt", ios::trunc); //用二进制的方法打开顾客文件 ，覆盖掉之前的所有信息重新写入 
+		for (i = 0; i < Room_count - 1; i++) //根据顾客数量判断输入几组信息 
+		{
+			if (r[i] != NULL)
+			{
+				WriteRoom(r[i]);//调用构造函数来创建顾客信息 
+			}
+		}
+		Rout.close(); break; }
+	case 2: {
+		ofstream Gout("guest.txt", ios::trunc); //用二进制的方法打开顾客文件 ，覆盖掉之前的所有信息重新写入 
+		for (i = 0; i < Guest_count - 1; i++) //根据顾客数量判断输入几组信息 
+		{
+			if (g[i] != NULL)
+			{
+				WriteGuest(g[i]);//调用构造函数来创建顾客信息 
+			}
+		}
+		Gout.close(); break; }
+	}
+}
+void Manage::WriteRoom(Room* r)//储存单个信息 
+{
+	ofstream Rout("room.txt", ios::app);//打开房间文件，追加读写，不会覆盖掉之前的所有信息 
+	Rout << r->InputNumber() << "\t" << r->InputType() << "\t" << r->InputPrice() << "\t" << r->InputWhether() << endl;
+	Rout.close();
+}
+void Manage::WriteGuest(Guest* g)//储存单个信息 
+{
+	ofstream Gout("guest.txt", ios::app);//打开顾客文件，追加读写，不会覆盖掉之前的所有信息 
+	Gout << g->InputNumber() << "\t" << g->InputName() << "\t" << g->InputId() << "\t" << g->InputSex() << "\t" << g->InputIntime() << "\t" << g->InputDays() << endl;
+	Gout.close();
+}
+void Manage::SearchType()
+{
+	ReadData();
+	for (i = 0; i < Room_count; i++)
+	{
+		if (r[i]->InputWhether() == "无")
+		{
+			r[i]->show();
+		}
+	}
+}
+void Manage::SearchNumber()
+{
+	ReadData();
+	int number, n;
+	cout << "请输出要查询的房间号: "; cin >> number;
+	for (i = 0; i < Room_count - 1; i++)
+	{
+		if (number == r[i]->InputNumber())
+			r[i]->show();
+	}
+	for (i = 0; i < Guest_count - 1; i++)
+	{
+		if (g[i]->InputNumber() == number)
+			g[i]->show();
+	}
+}
+int main()
+{
+	Manage M;
+	int n;
+	while (1)
+	{
+		system("cls");
+		cout << endl << endl << endl << "\t\t\t宾 馆 房 间 管 理 系 统     " << endl << endl;
+		cout << "\t\t\t1、房 间 信 息 的 录 入" << endl << endl;
+		cout << "\t\t\t2、顾 客 入 住 房 间 登 记" << endl << endl;
+		cout << "\t\t\t3、顾 客 退 房 结 账" << endl << endl;
+		cout << "\t\t\t4、所 有 房 间 信 息 显 示" << endl << endl;
+		cout << "\t\t\t5、所 有 顾 客 的 显 示" << endl << endl;
+		cout << "\t\t\t6、查 询 所 有 空 房 间" << endl << endl;
+		cout << "\t\t\t7、查 询 指 定 的 房 间 号" << endl << endl;
+		cout << "\t\t\t8、退 出 系 统" << endl << endl;
+		cout << endl << "请选择:  ";
+		cin >> n;
+		cout << endl << endl;
+		switch (n)
+		{
+		case 1:M.IncreaseRoom(); system("pause"); break;
+		case 2:M.Check_In(); system("pause"); break;
+		case 3:M.Check_Out(); system("pause"); break;
+		case 4:M.Display(1); system("pause"); break;
+		case 5:M.Display(2); system("pause"); break;
+		case 6: M.SearchType(); system("pause"); break;
+		case 7: M.SearchNumber(); system("pause"); break;
+		case 8:exit(0);
+		}
+	}
+	return 0;
+}

@@ -1,0 +1,16 @@
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/Progress/Vivado/multiple_instruction_cpu/multiple_instruction_cpu.srcs/sources_1/new/acc.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module acc
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/Progress/Vivado/multiple_instruction_cpu/multiple_instruction_cpu.srcs/sources_1/new/alu.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module alu
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/Progress/Vivado/multiple_instruction_cpu/multiple_instruction_cpu.srcs/sources_1/new/cpu.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module cpu_10
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/Progress/Vivado/multiple_instruction_cpu/multiple_instruction_cpu.srcs/sources_1/new/cu.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module cu
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/Progress/Vivado/multiple_instruction_cpu/multiple_instruction_cpu.srcs/sources_1/new/dataMem.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module dataMem
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/Progress/Vivado/multiple_instruction_cpu/multiple_instruction_cpu.srcs/sources_1/new/insMem.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module insMem
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/Progress/Vivado/multiple_instruction_cpu/multiple_instruction_cpu.srcs/sources_1/new/pc.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module pc
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/Progress/Vivado/multiple_instruction_cpu/multiple_instruction_cpu.srcs/sim_1/new/sim_cpu.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module sim_cpu

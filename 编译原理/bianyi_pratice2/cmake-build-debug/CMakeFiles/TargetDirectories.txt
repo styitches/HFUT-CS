@@ -1,0 +1,3 @@
+D:/Progress/CLion/bianyi_pratice2/cmake-build-debug/CMakeFiles/bianyi_pratice2.dir
+D:/Progress/CLion/bianyi_pratice2/cmake-build-debug/CMakeFiles/edit_cache.dir
+D:/Progress/CLion/bianyi_pratice2/cmake-build-debug/CMakeFiles/rebuild_cache.dir

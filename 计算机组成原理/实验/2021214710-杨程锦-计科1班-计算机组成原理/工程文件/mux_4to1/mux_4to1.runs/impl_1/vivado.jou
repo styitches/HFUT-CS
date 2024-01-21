@@ -1,0 +1,12 @@
+#-----------------------------------------------------------
+# Vivado v2018.3 (64-bit)
+# SW Build 2405991 on Thu Dec  6 23:38:27 MST 2018
+# IP Build 2404404 on Fri Dec  7 01:43:56 MST 2018
+# Start of session at: Thu Jun  1 13:28:46 2023
+# Process ID: 96196
+# Current directory: D:/Progress/Vivado/mux_4to1/mux_4to1.runs/impl_1
+# Command line: vivado.exe -log mux_4to1.vdi -applog -product Vivado -messageDb vivado.pb -mode batch -source mux_4to1.tcl -notrace
+# Log file: D:/Progress/Vivado/mux_4to1/mux_4to1.runs/impl_1/mux_4to1.vdi
+# Journal file: D:/Progress/Vivado/mux_4to1/mux_4to1.runs/impl_1\vivado.jou
+#-----------------------------------------------------------
+source mux_4to1.tcl -notrace

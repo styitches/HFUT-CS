@@ -1,0 +1,13 @@
+0.6
+2018.3
+Dec  7 2018
+00:33:28
+D:/Progress/Vivado/multiple_instruction_cpu/multiple_instruction_cpu.sim/sim_1/behav/xsim/glbl.v,1544155481,verilog,,,,glbl,,,,,,,,
+,,,,,,sim_cpu,,,,,,,,
+D:/Progress/Vivado/multiple_instruction_cpu/multiple_instruction_cpu.srcs/sources_1/new/acc.v,1687264294,verilog,,D:/Progress/Vivado/multiple_instruction_cpu/multiple_instruction_cpu.srcs/sources_1/new/alu.v,,acc,,,,,,,,
+D:/Progress/Vivado/multiple_instruction_cpu/multiple_instruction_cpu.srcs/sources_1/new/alu.v,1687264294,verilog,,D:/Progress/Vivado/multiple_instruction_cpu/multiple_instruction_cpu.srcs/sources_1/new/cpu.v,,alu,,,,,,,,
+,,,,D:/Progress/Vivado/multiple_instruction_cpu/multiple_instruction_cpu.srcs/sources_1/new/cu.v,,cpu_10,,,,,,,,
+D:/Progress/Vivado/multiple_instruction_cpu/multiple_instruction_cpu.srcs/sources_1/new/cu.v,1687259447,verilog,,D:/Progress/Vivado/multiple_instruction_cpu/multiple_instruction_cpu.srcs/sources_1/new/dataMem.v,,cu,,,,,,,,
+,,,,D:/Progress/Vivado/multiple_instruction_cpu/multiple_instruction_cpu.srcs/sources_1/new/insMem.v,,dataMem,,,,,,,,
+D:/Progress/Vivado/multiple_instruction_cpu/multiple_instruction_cpu.srcs/sources_1/new/insMem.v,1687191932,verilog,,D:/Progress/Vivado/multiple_instruction_cpu/multiple_instruction_cpu.srcs/sources_1/new/pc.v,,insMem,,,,,,,,
+D:/Progress/Vivado/multiple_instruction_cpu/multiple_instruction_cpu.srcs/sources_1/new/pc.v,1687191922,verilog,,D:/Progress/Vivado/multiple_instruction_cpu/multiple_instruction_cpu.srcs/sim_1/new/sim_cpu.v,,pc,,,,,,,,

@@ -1,0 +1,15 @@
+# compile verilog/system verilog design source files
+verilog xil_defaultlib  \
+"../../../../multiple_instruction_cpu.srcs/sources_1/new/acc.v" \
+"../../../../multiple_instruction_cpu.srcs/sources_1/new/alu.v" \
+"../../../../multiple_instruction_cpu.srcs/sources_1/new/cu.v" \
+"../../../../multiple_instruction_cpu.srcs/sources_1/new/dataMem.v" \
+"../../../../multiple_instruction_cpu.srcs/sources_1/new/insMem.v" \
+"../../../../multiple_instruction_cpu.srcs/sources_1/new/pc.v" \
+"../../../../multiple_instruction_cpu.srcs/sources_1/new/cpu.v" \
+
+# compile glbl module
+verilog xil_defaultlib "glbl.v"
+
+# Do not sort compile order
+nosort

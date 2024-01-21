@@ -1,0 +1,15 @@
+program a {
+   integer ab,b,c,d,x,y,z;   integer a,b,c,d,x,y,z;
+   while  ab<b   
+   {
+        if c>d
+       { 
+            x=y+z;
+       }
+       else 
+       {
+           x=y+z*w;
+       }
+       z=z+x;
+   }
+}

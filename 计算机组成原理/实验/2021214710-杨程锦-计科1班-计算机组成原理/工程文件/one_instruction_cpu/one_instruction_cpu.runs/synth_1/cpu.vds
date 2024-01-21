@@ -1,0 +1,284 @@
+#-----------------------------------------------------------
+# Vivado v2018.3 (64-bit)
+# SW Build 2405991 on Thu Dec  6 23:38:27 MST 2018
+# IP Build 2404404 on Fri Dec  7 01:43:56 MST 2018
+# Start of session at: Thu Jun 15 02:38:50 2023
+# Process ID: 16276
+# Current directory: D:/Progress/Vivado/one_instruction_cpu/one_instruction_cpu.runs/synth_1
+# Command line: vivado.exe -log cpu.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source cpu.tcl
+# Log file: D:/Progress/Vivado/one_instruction_cpu/one_instruction_cpu.runs/synth_1/cpu.vds
+# Journal file: D:/Progress/Vivado/one_instruction_cpu/one_instruction_cpu.runs/synth_1\vivado.jou
+#-----------------------------------------------------------
+source cpu.tcl -notrace
+Command: synth_design -top cpu -part xc7a35tcsg324-1
+Starting synth_design
+Attempting to get a license for feature 'Synthesis' and/or device 'xc7a35t'
+INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7a35t'
+INFO: Launching helper process for spawning children vivado processes
+INFO: Helper process launched with PID 26768 
+WARNING: [Synth 8-2292] literal value truncated to fit in 16 bits [D:/Progress/Vivado/one_instruction_cpu/one_instruction_cpu.srcs/sources_1/new/insMem.v:33]
+---------------------------------------------------------------------------------
+Starting Synthesize : Time (s): cpu = 00:00:02 ; elapsed = 00:00:02 . Memory (MB): peak = 442.836 ; gain = 110.605
+---------------------------------------------------------------------------------
+INFO: [Synth 8-6157] synthesizing module 'cpu' [D:/Progress/Vivado/one_instruction_cpu/one_instruction_cpu.srcs/sources_1/new/cpu.v:23]
+INFO: [Synth 8-6157] synthesizing module 'pc' [D:/Progress/Vivado/one_instruction_cpu/one_instruction_cpu.srcs/sources_1/new/pc.v:23]
+INFO: [Synth 8-6155] done synthesizing module 'pc' (1#1) [D:/Progress/Vivado/one_instruction_cpu/one_instruction_cpu.srcs/sources_1/new/pc.v:23]
+INFO: [Synth 8-6157] synthesizing module 'insMem' [D:/Progress/Vivado/one_instruction_cpu/one_instruction_cpu.srcs/sources_1/new/insMem.v:23]
+INFO: [Synth 8-6155] done synthesizing module 'insMem' (2#1) [D:/Progress/Vivado/one_instruction_cpu/one_instruction_cpu.srcs/sources_1/new/insMem.v:23]
+INFO: [Synth 8-6157] synthesizing module 'register' [D:/Progress/Vivado/one_instruction_cpu/one_instruction_cpu.srcs/sources_1/new/register.v:23]
+INFO: [Synth 8-6155] done synthesizing module 'register' (3#1) [D:/Progress/Vivado/one_instruction_cpu/one_instruction_cpu.srcs/sources_1/new/register.v:23]
+WARNING: [Synth 8-350] instance 'register' of module 'register' requires 10 connections, but only 9 given [D:/Progress/Vivado/one_instruction_cpu/one_instruction_cpu.srcs/sources_1/new/cpu.v:46]
+INFO: [Synth 8-6157] synthesizing module 'alu' [D:/Progress/Vivado/one_instruction_cpu/one_instruction_cpu.srcs/sources_1/new/alu.v:23]
+	Parameter ADD bound to: 3'b000 
+	Parameter SUB bound to: 3'b001 
+	Parameter AND bound to: 3'b010 
+	Parameter OR bound to: 3'b011 
+	Parameter SLL bound to: 3'b100 
+	Parameter SRL bound to: 3'b101 
+	Parameter SLA bound to: 3'b110 
+	Parameter SRA bound to: 3'b111 
+INFO: [Synth 8-226] default block is never used [D:/Progress/Vivado/one_instruction_cpu/one_instruction_cpu.srcs/sources_1/new/alu.v:42]
+INFO: [Synth 8-6155] done synthesizing module 'alu' (4#1) [D:/Progress/Vivado/one_instruction_cpu/one_instruction_cpu.srcs/sources_1/new/alu.v:23]
+INFO: [Synth 8-6157] synthesizing module 'cu' [D:/Progress/Vivado/one_instruction_cpu/one_instruction_cpu.srcs/sources_1/new/cu.v:23]
+INFO: [Synth 8-6155] done synthesizing module 'cu' (5#1) [D:/Progress/Vivado/one_instruction_cpu/one_instruction_cpu.srcs/sources_1/new/cu.v:23]
+WARNING: [Synth 8-3848] Net empty in module/entity cpu does not have driver. [D:/Progress/Vivado/one_instruction_cpu/one_instruction_cpu.srcs/sources_1/new/cpu.v:26]
+WARNING: [Synth 8-3848] Net rdata1 in module/entity cpu does not have driver. [D:/Progress/Vivado/one_instruction_cpu/one_instruction_cpu.srcs/sources_1/new/cpu.v:33]
+INFO: [Synth 8-6155] done synthesizing module 'cpu' (6#1) [D:/Progress/Vivado/one_instruction_cpu/one_instruction_cpu.srcs/sources_1/new/cpu.v:23]
+WARNING: [Synth 8-3331] design cu has unconnected port opcode[6]
+WARNING: [Synth 8-3331] design cu has unconnected port opcode[5]
+WARNING: [Synth 8-3331] design cu has unconnected port opcode[4]
+WARNING: [Synth 8-3331] design cu has unconnected port opcode[3]
+WARNING: [Synth 8-3331] design cu has unconnected port opcode[2]
+WARNING: [Synth 8-3331] design cu has unconnected port opcode[1]
+WARNING: [Synth 8-3331] design cu has unconnected port opcode[0]
+WARNING: [Synth 8-3331] design cpu has unconnected port empty
+---------------------------------------------------------------------------------
+Finished Synthesize : Time (s): cpu = 00:00:02 ; elapsed = 00:00:02 . Memory (MB): peak = 476.055 ; gain = 143.824
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Constraint Validation : Time (s): cpu = 00:00:02 ; elapsed = 00:00:02 . Memory (MB): peak = 476.055 ; gain = 143.824
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Loading Part and Timing Information
+---------------------------------------------------------------------------------
+Loading part: xc7a35tcsg324-1
+---------------------------------------------------------------------------------
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:02 ; elapsed = 00:00:02 . Memory (MB): peak = 476.055 ; gain = 143.824
+---------------------------------------------------------------------------------
+INFO: [Device 21-403] Loading part xc7a35tcsg324-1
+INFO: [Synth 8-5544] ROM "units" won't be mapped to Block RAM because address size (2) smaller than threshold (5)
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:03 ; elapsed = 00:00:02 . Memory (MB): peak = 476.055 ; gain = 143.824
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+No constraint files found.
+---------------------------------------------------------------------------------
+Start RTL Component Statistics 
+---------------------------------------------------------------------------------
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input     16 Bit       Adders := 1     
+	   3 Input     16 Bit       Adders := 1     
+	   2 Input      8 Bit       Adders := 1     
++---Registers : 
+	               16 Bit    Registers := 2     
+	                8 Bit    Registers := 1     
++---RAMs : 
+	              128 Bit         RAMs := 1     
++---Muxes : 
+	   3 Input     16 Bit        Muxes := 1     
+	   2 Input     16 Bit        Muxes := 2     
+---------------------------------------------------------------------------------
+Finished RTL Component Statistics 
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start RTL Hierarchical Component Statistics 
+---------------------------------------------------------------------------------
+Hierarchical RTL Component report 
+Module pc 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input      8 Bit       Adders := 1     
++---Registers : 
+	                8 Bit    Registers := 1     
+Module insMem 
+Detailed RTL Component Info : 
++---Muxes : 
+	   3 Input     16 Bit        Muxes := 1     
+Module register 
+Detailed RTL Component Info : 
++---Registers : 
+	               16 Bit    Registers := 2     
++---RAMs : 
+	              128 Bit         RAMs := 1     
++---Muxes : 
+	   2 Input     16 Bit        Muxes := 2     
+Module alu 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input     16 Bit       Adders := 1     
+	   3 Input     16 Bit       Adders := 1     
+---------------------------------------------------------------------------------
+Finished RTL Hierarchical Component Statistics
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Part Resource Summary
+---------------------------------------------------------------------------------
+Part Resources:
+DSPs: 90 (col length:60)
+BRAMs: 100 (col length: RAMB18 60 RAMB36 30)
+---------------------------------------------------------------------------------
+Finished Part Resource Summary
+---------------------------------------------------------------------------------
+No constraint files found.
+---------------------------------------------------------------------------------
+Start Cross Boundary and Area Optimization
+---------------------------------------------------------------------------------
+Warning: Parallel synthesis criteria is not met 
+WARNING: [Synth 8-3331] design cpu has unconnected port empty
+---------------------------------------------------------------------------------
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:04 ; elapsed = 00:00:04 . Memory (MB): peak = 597.426 ; gain = 265.195
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+No constraint files found.
+---------------------------------------------------------------------------------
+Start Timing Optimization
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Timing Optimization : Time (s): cpu = 00:00:04 ; elapsed = 00:00:04 . Memory (MB): peak = 597.426 ; gain = 265.195
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start Technology Mapping
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Technology Mapping : Time (s): cpu = 00:00:04 ; elapsed = 00:00:04 . Memory (MB): peak = 606.133 ; gain = 273.902
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished IO Insertion : Time (s): cpu = 00:00:05 ; elapsed = 00:00:05 . Memory (MB): peak = 606.133 ; gain = 273.902
+---------------------------------------------------------------------------------
+
+Report Check Netlist: 
++------+------------------+-------+---------+-------+------------------+
+|      |Item              |Errors |Warnings |Status |Description       |
++------+------------------+-------+---------+-------+------------------+
+|1     |multi_driven_nets |      0|        0|Passed |Multi driven nets |
++------+------------------+-------+---------+-------+------------------+
+---------------------------------------------------------------------------------
+Start Renaming Generated Instances
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:05 ; elapsed = 00:00:05 . Memory (MB): peak = 606.133 ; gain = 273.902
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start Rebuilding User Hierarchy
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:05 ; elapsed = 00:00:05 . Memory (MB): peak = 606.133 ; gain = 273.902
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Ports
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:05 ; elapsed = 00:00:05 . Memory (MB): peak = 606.133 ; gain = 273.902
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:05 ; elapsed = 00:00:05 . Memory (MB): peak = 606.133 ; gain = 273.902
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Nets
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:05 ; elapsed = 00:00:05 . Memory (MB): peak = 606.133 ; gain = 273.902
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Writing Synthesis Report
+---------------------------------------------------------------------------------
+
+Report BlackBoxes: 
++-+--------------+----------+
+| |BlackBox name |Instances |
++-+--------------+----------+
++-+--------------+----------+
+
+Report Cell Usage: 
++------+------+------+
+|      |Cell  |Count |
++------+------+------+
+|1     |OBUFT |     1|
++------+------+------+
+
+Report Instance Areas: 
++------+---------+-------+------+
+|      |Instance |Module |Cells |
++------+---------+-------+------+
+|1     |top      |       |     1|
++------+---------+-------+------+
+---------------------------------------------------------------------------------
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:05 ; elapsed = 00:00:05 . Memory (MB): peak = 606.133 ; gain = 273.902
+---------------------------------------------------------------------------------
+Synthesis finished with 0 errors, 0 critical warnings and 13 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:05 ; elapsed = 00:00:05 . Memory (MB): peak = 606.133 ; gain = 273.902
+Synthesis Optimization Complete : Time (s): cpu = 00:00:05 ; elapsed = 00:00:05 . Memory (MB): peak = 606.133 ; gain = 273.902
+INFO: [Project 1-571] Translating synthesized netlist
+INFO: [Project 1-570] Preparing netlist for logic optimization
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 712.855 ; gain = 0.000
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+INFO: [Common 17-83] Releasing license: Synthesis
+21 Infos, 13 Warnings, 0 Critical Warnings and 0 Errors encountered.
+synth_design completed successfully
+synth_design: Time (s): cpu = 00:00:07 ; elapsed = 00:00:09 . Memory (MB): peak = 712.855 ; gain = 393.699
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 712.855 ; gain = 0.000
+WARNING: [Constraints 18-5210] No constraints selected for write.
+Resolution: This message can indicate that there are no constraints for the design, or it can indicate that the used_in flags are set such that the constraints are ignored. This later case is used when running synth_design to not write synthesis constraints to the resulting checkpoint. Instead, project constraints are read when the synthesized design is opened.
+INFO: [Common 17-1381] The checkpoint 'D:/Progress/Vivado/one_instruction_cpu/one_instruction_cpu.runs/synth_1/cpu.dcp' has been generated.
+INFO: [runtcl-4] Executing : report_utilization -file cpu_utilization_synth.rpt -pb cpu_utilization_synth.pb
+INFO: [Common 17-206] Exiting Vivado at Thu Jun 15 02:39:02 2023...

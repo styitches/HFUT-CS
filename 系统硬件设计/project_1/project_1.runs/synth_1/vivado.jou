@@ -1,0 +1,12 @@
+#-----------------------------------------------------------
+# Vivado v2018.3 (64-bit)
+# SW Build 2405991 on Thu Dec  6 23:38:27 MST 2018
+# IP Build 2404404 on Fri Dec  7 01:43:56 MST 2018
+# Start of session at: Sun Dec 24 21:19:29 2023
+# Process ID: 45004
+# Current directory: D:/Progress/Vivado/project_1/project_1.runs/synth_1
+# Command line: vivado.exe -log riscv_top.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source riscv_top.tcl
+# Log file: D:/Progress/Vivado/project_1/project_1.runs/synth_1/riscv_top.vds
+# Journal file: D:/Progress/Vivado/project_1/project_1.runs/synth_1\vivado.jou
+#-----------------------------------------------------------
+source riscv_top.tcl -notrace
